@@ -70,34 +70,32 @@ function HabitLists() {
     return (
         <div>
             <h2>Your Habit Lists</h2>
-            <ul>
-                {habitLists.map((list, index) => (
-                    <li key={list.id}>
-                        <strong onClick={() => setCurrentListIndex(index)}>{list.name}</strong>
-                        <button onClick={() => deleteList(list.id)}>Delete List</button>
-                        <ul>
-                            {list.habits.map((habit, habitIndex) => (
-                                <li key={habitIndex}>
-                                    {habit}
-                                    <button onClick={() => deleteHabitFromList(index, habitIndex)}>Delete</button>
-                                </li>
-                            ))}
-                        </ul>
-                        {currentListIndex === index && (
-                            <div>
-                                <input
-                                    type="text"
-                                    value={newHabit}
-                                    onChange={(e) => setNewHabit(e.target.value)}
-                                    onKeyDown={(e) => handleKeyDown(e, () => addHabitToList(index))}
-                                    placeholder={`Add a new habit to ${list.name}`}
-                                />
-                                <button onClick={() => addHabitToList(index)}>Add Habit</button>
-                            </div>
-                        )}
-                    </li>
-                ))}
-            </ul>
+            {habitLists.map((list, index) => (
+                <div key={list.id} className="list-container">
+                    <h3 onClick={() => setCurrentListIndex(index)}>{list.name}</h3>
+                    <button onClick={() => deleteList(list.id)}>Delete List</button>
+                    <ul>
+                        {list.habits.map((habit, habitIndex) => (
+                            <li key={habitIndex}>
+                                {habit}
+                                <button onClick={() => deleteHabitFromList(index, habitIndex)}>Delete</button>
+                            </li>
+                        ))}
+                    </ul>
+                    {currentListIndex === index && (
+                        <div>
+                            <input
+                                type="text"
+                                value={newHabit}
+                                onChange={(e) => setNewHabit(e.target.value)}
+                                onKeyDown={(e) => handleKeyDown(e, () => addHabitToList(index))}
+                                placeholder={`Add a new habit to ${list.name}`}
+                            />
+                            <button onClick={() => addHabitToList(index)}>Add Habit</button>
+                        </div>
+                    )}
+                </div>
+            ))}
             <input
                 type="text"
                 value={newListName}
