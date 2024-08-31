@@ -1,50 +1,46 @@
 import React, { useState, useEffect } from 'react';
 
-function HabitList() {
-    const [habits, setHabits] = useState([]);
-    const [newHabit, setNewHabit] = useState('');
+function HabitLists() {
+    const [habitLists, setHabitLists] = useState([]);
+    const [newListName, setNewListName] = useState('');
 
     useEffect(() => {
-        const storedHabits = JSON.parse(localStorage.getItem('habits'));
-        if (storedHabits) {
-            setHabits(storedHabits);
+        const storedHabitLists = JSON.parse(localStorage.getItem('habitLists'));
+        if (storedHabitLists) {
+            setHabitLists(storedHabitLists);
         }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('habits', JSON.stringify(habits));
-    }, [habits]);
+        localStorage.setItem('habitLists', JSON.stringify(habitLists));
+    }, [habitLists]);
 
-    const addHabit = () => {
-        if (newHabit) {
-            setHabits([...habits, newHabit]);
-            setNewHabit('');
+    const addList = () => {
+        if (newListName) {
+            setHabitLists([...habitLists, { name: newListName, habits: [] }]);
+            setNewListName('');
         }
-    };
-
-    const deleteHabit = (indexToDelete) => {
-        setHabits(habits.filter((_, index) => index !== indexToDelete));
     };
 
     return (
         <div>
-            <h2>Your Habits</h2>
+            <h2>Your Habit Lists</h2>
             <ul>
-                {habits.map((habit, index) => (
+                {habitLists.map((list, index) => (
                     <li key={index}>
-                        {habit} <button onClick={() => deleteHabit(index)}>Delete</button>
+                        {list.name} ({list.habits.length} habits)
                     </li>
                 ))}
             </ul>
             <input
                 type="text"
-                value={newHabit}
-                onChange={(e) => setNewHabit(e.target.value)}
-                placeholder="Enter a new habit"
+                value={newListName}
+                onChange={(e) => setNewListName(e.target.value)}
+                placeholder="Enter a new list name"
             />
-            <button onClick={addHabit}>Add Habit</button>
+            <button onClick={addList}>Add List</button>
         </div>
     );
 }
 
-export default HabitList;
+export default HabitLists;
