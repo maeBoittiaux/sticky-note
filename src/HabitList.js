@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function HabitList() {
     const [habits, setHabits] = useState([]);
+
+    useEffect(() => {
+        const storedHabits = JSON.parse(localStorage.getItem('habits'));
+        if (storedHabits) {
+            setHabits(storedHabits);
+        }
+    }, []);
 
     return (
         <div>
