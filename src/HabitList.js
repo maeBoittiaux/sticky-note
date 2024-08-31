@@ -61,6 +61,12 @@ function HabitLists() {
         });
     };
 
+    const handleKeyDown = (e, action) => {
+        if (e.key === 'Enter') {
+            action();
+        }
+    };
+
     return (
         <div>
             <h2>Your Habit Lists</h2>
@@ -83,6 +89,7 @@ function HabitLists() {
                                     type="text"
                                     value={newHabit}
                                     onChange={(e) => setNewHabit(e.target.value)}
+                                    onKeyDown={(e) => handleKeyDown(e, () => addHabitToList(index))}
                                     placeholder={`Add a new habit to ${list.name}`}
                                 />
                                 <button onClick={() => addHabitToList(index)}>Add Habit</button>
@@ -95,6 +102,7 @@ function HabitLists() {
                 type="text"
                 value={newListName}
                 onChange={(e) => setNewListName(e.target.value)}
+                onKeyDown={(e) => handleKeyDown(e, addList)}
                 placeholder="Enter a new list name"
             />
             <button onClick={addList}>Add List</button>
