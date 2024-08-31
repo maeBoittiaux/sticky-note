@@ -1,5 +1,5 @@
 import React from 'react';
-import HabitList from './components/HabitList';
+import HabitList from './HabitList';
 
 function App() {
   return (
