@@ -1,3 +1,9 @@
+/* The title : 'Habit Tracker' */
+.title {
+  color: #333;
+  font-size: 42px;
+}
+
 /* The whole window container thing */
 body {
   font-family: 'Courier New', Courier, monospace;
@@ -9,12 +15,6 @@ body {
   align-items: center;
   justify-content: center;
   color: #333;
-}
-
-/* The title : 'Habit Tracker' */
-h1 {
-  color: #333;
-  font-size: 42px;
 }
 
 /* Styles for the unordered list / makes no bullet points */
