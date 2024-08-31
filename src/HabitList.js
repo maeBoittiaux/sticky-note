@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { openDB, getAllData, addData, updateData, deleteData } from '../utils/indexedDB';
+import { openDB, getAllData, addData, updateData, deleteData } from './indexedDB';
 
 const DB_NAME = 'HabitTrackerDB';
 const STORE_NAME = 'habitLists';
