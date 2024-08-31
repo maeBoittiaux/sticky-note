@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function HabitList() {
     const [habits, setHabits] = useState([]);
+    const [newHabit, setNewHabit] = useState('');
 
     useEffect(() => {
         const storedHabits = JSON.parse(localStorage.getItem('habits'));
@@ -15,9 +16,9 @@ function HabitList() {
     }, [habits]);
 
     const addHabit = () => {
-        const newHabit = prompt('Enter a new habit:');
         if (newHabit) {
             setHabits([...habits, newHabit]);
+            setNewHabit('');
         }
     };
 
@@ -29,6 +30,12 @@ function HabitList() {
                     <li key={index}>{habit}</li>
                 ))}
             </ul>
+            <input
+                type="text"
+                value={newHabit}
+                onChange={(e) => setNewHabit(e.target.value)}
+                placeholder="Enter a new habit"
+            />
             <button onClick={addHabit}>Add Habit</button>
         </div>
     );
