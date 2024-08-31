@@ -25,21 +25,17 @@ ul {
 
 /* The list containers */
 .list-container {
-  border: 1px solid #ccc;
   padding: 15px;
-  margin: 15px 0;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  margin: 15px;
+  box-shadow: 8px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid #cfcf8c;
+  background-color: #f5f5c1;
 }
 
 /* The title of the list containers */
 .list-container h3 {
-  margin-top: 0;
-}
-
-/* The container for the unordered list */
-.list-container ul {
-  margin-top: 0px;
+  margin: 10px;
+  font-size: 20px;
 }
 
 /* The list items */
