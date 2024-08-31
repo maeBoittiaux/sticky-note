@@ -69,7 +69,6 @@ function HabitList() {
 
     return (
         <div>
-            <h2>Your Habit Lists</h2>
             <input
                 type="text"
                 value={newListName}
