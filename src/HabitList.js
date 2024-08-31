@@ -14,6 +14,13 @@ function HabitList() {
         localStorage.setItem('habits', JSON.stringify(habits));
     }, [habits]);
 
+    const addHabit = () => {
+        const newHabit = prompt('Enter a new habit:');
+        if (newHabit) {
+            setHabits([...habits, newHabit]);
+        }
+    };
+
     return (
         <div>
             <h2>Your Habits</h2>
@@ -22,6 +29,7 @@ function HabitList() {
                     <li key={index}>{habit}</li>
                 ))}
             </ul>
+            <button onClick={addHabit}>Add Habit</button>
         </div>
     );
 }
