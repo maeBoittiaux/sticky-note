@@ -70,6 +70,15 @@ function HabitLists() {
     return (
         <div>
             <h2>Your Habit Lists</h2>
+            <input
+                type="text"
+                value={newListName}
+                onChange={(e) => setNewListName(e.target.value)}
+                onKeyDown={(e) => handleKeyDown(e, addList)}
+                placeholder="Enter a new list name"
+            />
+            <button onClick={addList}>Add List</button>
+
             {habitLists.map((list, index) => (
                 <div key={list.id} className="list-container">
                     <h3 onClick={() => setCurrentListIndex(index)}>{list.name}</h3>
@@ -96,14 +105,6 @@ function HabitLists() {
                     )}
                 </div>
             ))}
-            <input
-                type="text"
-                value={newListName}
-                onChange={(e) => setNewListName(e.target.value)}
-                onKeyDown={(e) => handleKeyDown(e, addList)}
-                placeholder="Enter a new list name"
-            />
-            <button onClick={addList}>Add List</button>
         </div>
     );
 }
