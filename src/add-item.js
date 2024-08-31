@@ -18,8 +18,12 @@ function AddItem({ onAdd, placeholder }) {
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder={placeholder}
                 onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
+                className='sticky-note'
             />
-            <button onClick={handleAdd}>Add</button>
+            <button
+                className='sticky-note'
+                onClick={handleAdd}>Add
+            </button>
         </div>
     );
 }

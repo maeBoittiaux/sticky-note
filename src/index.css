@@ -84,3 +84,8 @@ input:focus {
 input::placeholder {
   color: #333;
 }
+
+.sticky-note {
+  background-color: #f5f5c1;
+  border: 2px solid #cfcf8c;
+}
