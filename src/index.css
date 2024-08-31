@@ -1,3 +1,4 @@
+/* The whole window container thing */
 body {
   font-family: 'Courier New', Courier, monospace;
   background-color: #f0f0f0;
@@ -10,16 +11,19 @@ body {
   color: #333;
 }
 
+/* The title : 'Habit Tracker' */
 h1 {
   color: #333;
   font-size: 42px;
 }
 
+/* Styles for the unordered list / makes no bullet points */
 ul {
   list-style-type: none;
   padding: 0;
 }
 
+/* The list containers */
 .list-container {
   border: 1px solid #ccc;
   padding: 15px;
@@ -28,19 +32,23 @@ ul {
   background-color: #f9f9f9;
 }
 
+/* The title of the list containers */
 .list-container h3 {
   margin-top: 0;
 }
 
+/* The container for the unordered list */
 .list-container ul {
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
+/* The list items */
 li {
   padding: 10px;
   margin: 10px;
 }
 
+/* The buttons */
 button {
   color: #333;
   font-family: 'Courier New', Courier, monospace;
@@ -52,11 +60,13 @@ button {
   cursor: pointer;
 }
 
+/* The effects when the button is hovered over */
 button:hover {
   border: 2px solid #333;
   color: #333;
 }
 
+/* The input boxes */
 input {
   color: #333;
   font-family: 'Courier New', Courier, monospace;
@@ -68,11 +78,13 @@ input {
   margin-right: 10px;
 }
 
+/* The effects when the input box is clicked on */
 input:focus {
   border: 2px solid #333;
   outline: none;
 }
 
+/* The placeholder text in the input boxes */
 input::placeholder {
   color: #333;
 }
