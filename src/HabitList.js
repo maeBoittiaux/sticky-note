@@ -1,26 +1,35 @@
 import React, { useState, useEffect } from 'react';
+import { openDB, getAllData, addData, updateData, deleteData } from '../indexedDB';
+
+const DB_NAME = 'HabitTrackerDB';
+const STORE_NAME = 'habitLists';
 
 function HabitLists() {
+    const [db, setDb] = useState(null);
     const [habitLists, setHabitLists] = useState([]);
     const [newListName, setNewListName] = useState('');
     const [currentListIndex, setCurrentListIndex] = useState(null);
     const [newHabit, setNewHabit] = useState('');
 
     useEffect(() => {
-        const storedHabitLists = JSON.parse(localStorage.getItem('habitLists'));
-        if (storedHabitLists) {
-            setHabitLists(storedHabitLists);
-        }
+        openDB(DB_NAME, STORE_NAME).then((db) => {
+            setDb(db);
+            return getAllData(db, STORE_NAME);
+        }).then((data) => {
+            setHabitLists(data);
+        }).catch((error) => {
+            console.error('Failed to open IndexedDB:', error);
+        });
     }, []);
-
-    useEffect(() => {
-        localStorage.setItem('habitLists', JSON.stringify(habitLists));
-    }, [habitLists]);
 
     const addList = () => {
         if (newListName) {
-            setHabitLists([...habitLists, { name: newListName, habits: [] }]);
-            setNewListName('');
+            const newList = { name: newListName, habits: [] };
+            addData(db, STORE_NAME, newList).then((id) => {
+                newList.id = id;
+                setHabitLists([...habitLists, newList]);
+                setNewListName('');
+            });
         }
     };
 
@@ -28,15 +37,21 @@ function HabitLists() {
         if (newHabit) {
             const updatedLists = [...habitLists];
             updatedLists[index].habits.push(newHabit);
-            setHabitLists(updatedLists);
-            setNewHabit('');
+
+            updateData(db, STORE_NAME, updatedLists[index]).then(() => {
+                setHabitLists(updatedLists);
+                setNewHabit('');
+            });
         }
     };
 
     const deleteHabitFromList = (listIndex, habitIndex) => {
         const updatedLists = [...habitLists];
         updatedLists[listIndex].habits.splice(habitIndex, 1);
-        setHabitLists(updatedLists);
+
+        updateData(db, STORE_NAME, updatedLists[listIndex]).then(() => {
+            setHabitLists(updatedLists);
+        });
     };
 
     return (
@@ -44,7 +59,7 @@ function HabitLists() {
             <h2>Your Habit Lists</h2>
             <ul>
                 {habitLists.map((list, index) => (
-                    <li key={index}>
+                    <li key={list.id}>
                         <strong onClick={() => setCurrentListIndex(index)}>{list.name}</strong>
                         <ul>
                             {list.habits.map((habit, habitIndex) => (
