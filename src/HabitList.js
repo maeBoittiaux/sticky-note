@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { openDB, getAllData, addData, updateData, deleteData } from './indexedDB';
-
 import AddStickyNote from './add-sticky-note';
+import AddItem from './add-item';
 
 const DB_NAME = 'HabitTrackerDB';
 const STORE_NAME = 'habitLists';
@@ -73,14 +73,6 @@ function HabitItem({ habit, onDelete }) {
 
 // ListContainer Component
 function ListContainer({ list, onAddHabit, onDeleteHabit, onDeleteList }) {
-    const [newHabit, setNewHabit] = useState('');
-    const handleAddHabit = () => {
-        if (newHabit) {
-            onAddHabit(newHabit);
-            setNewHabit('');
-        }
-    };
-
     return (
         <div className="list-container">
             <h3>{list.name}</h3>
@@ -94,14 +86,10 @@ function ListContainer({ list, onAddHabit, onDeleteHabit, onDeleteList }) {
                     />
                 ))}
             </ul>
-            <input
-                type="text"
-                value={newHabit}
-                onChange={(e) => setNewHabit(e.target.value)}
-                placeholder={`Add a new habit to ${list.name}`}
-                onKeyDown={(e) => e.key === 'Enter' && handleAddHabit()}
+            <AddItem
+                onAdd={onAddHabit}
+                placeholder={`Add new item to ${list.name} ...`}
             />
-            <button onClick={handleAddHabit}>Add Habit</button>
         </div>
     );
 }
