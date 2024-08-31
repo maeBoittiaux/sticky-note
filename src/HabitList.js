@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { openDB, getAllData, addData, updateData, deleteData } from './indexedDB';
+import { openDB, getAllData, addData, updateData, deleteData } from '../utils/indexedDB';
 
 const DB_NAME = 'HabitTrackerDB';
 const STORE_NAME = 'habitLists';
@@ -54,6 +54,13 @@ function HabitLists() {
         });
     };
 
+    const deleteList = (listId) => {
+        deleteData(db, STORE_NAME, listId).then(() => {
+            setHabitLists(habitLists.filter((list) => list.id !== listId));
+            setCurrentListIndex(null);
+        });
+    };
+
     return (
         <div>
             <h2>Your Habit Lists</h2>
@@ -61,6 +68,7 @@ function HabitLists() {
                 {habitLists.map((list, index) => (
                     <li key={list.id}>
                         <strong onClick={() => setCurrentListIndex(index)}>{list.name}</strong>
+                        <button onClick={() => deleteList(list.id)}>Delete List</button>
                         <ul>
                             {list.habits.map((habit, habitIndex) => (
                                 <li key={habitIndex}>
