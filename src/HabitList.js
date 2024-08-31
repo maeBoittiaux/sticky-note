@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { openDB, getAllData, addData, updateData, deleteData } from './indexedDB';
 
+import AddStickyNote from './add-sticky-note';
+
 const DB_NAME = 'HabitTrackerDB';
 const STORE_NAME = 'habitLists';
 
@@ -104,38 +106,13 @@ function ListContainer({ list, onAddHabit, onDeleteHabit, onDeleteList }) {
     );
 }
 
-// AddItemForm Component
-function AddItemForm({ onAdd, placeholder }) {
-    const [inputValue, setInputValue] = useState('');
-
-    const handleAdd = () => {
-        if (inputValue) {
-            onAdd(inputValue);
-            setInputValue('');
-        }
-    };
-
-    return (
-        <div>
-            <input
-                type="text"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder={placeholder}
-                onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
-            />
-            <button onClick={handleAdd}>Add</button>
-        </div>
-    );
-}
-
 // Main HabitList Component
 function HabitList() {
     const { habitLists, addList, addHabit, deleteHabit, deleteList } = useHabitLists();
 
     return (
         <div>
-            <AddItemForm onAdd={addList} placeholder="Enter a new list name" />
+            <AddStickyNote onAdd={addList} />
 
             {habitLists.map((list, index) => (
                 <ListContainer
