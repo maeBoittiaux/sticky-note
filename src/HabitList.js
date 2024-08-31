@@ -10,6 +10,10 @@ function HabitList() {
         }
     }, []);
 
+    useEffect(() => {
+        localStorage.setItem('habits', JSON.stringify(habits));
+    }, [habits]);
+
     return (
         <div>
             <h2>Your Habits</h2>
