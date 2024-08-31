@@ -4,7 +4,7 @@ import { openDB, getAllData, addData, updateData, deleteData } from './indexedDB
 const DB_NAME = 'HabitTrackerDB';
 const STORE_NAME = 'habitLists';
 
-function HabitLists() {
+function HabitList() {
     const [db, setDb] = useState(null);
     const [habitLists, setHabitLists] = useState([]);
     const [newListName, setNewListName] = useState('');
@@ -109,4 +109,4 @@ function HabitLists() {
     );
 }
 
-export default HabitLists;
+export default HabitList;
