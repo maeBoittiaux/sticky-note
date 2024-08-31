@@ -22,12 +22,18 @@ function HabitList() {
         }
     };
 
+    const deleteHabit = (indexToDelete) => {
+        setHabits(habits.filter((_, index) => index !== indexToDelete));
+    };
+
     return (
         <div>
             <h2>Your Habits</h2>
             <ul>
                 {habits.map((habit, index) => (
-                    <li key={index}>{habit}</li>
+                    <li key={index}>
+                        {habit} <button onClick={() => deleteHabit(index)}>Delete</button>
+                    </li>
                 ))}
             </ul>
             <input
