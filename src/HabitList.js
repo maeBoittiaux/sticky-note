@@ -8,7 +8,7 @@ function HabitList() {
 
     return (
         <div>
-            <AddItemForm onAdd={addList} placeholder="Enter a new list name" />
+            <AddItemForm onAdd={addList} placeholder="Enter list name ..." />
 
             {habitLists.map((list, index) => (
                 <ListContainer
