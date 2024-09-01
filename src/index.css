@@ -200,6 +200,22 @@ button:hover {
   margin-bottom: 18px;
 }
 
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-footer button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
 /* The circle colour options on the modals */
 .color-option {
   display: inline-block;
@@ -230,46 +246,4 @@ button:hover {
 
 .sticky-note-top:hover .edit-note-button {
   display: block;
-}
-
-/* Modal styles */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  text-align: center;
-}
-
-.modal-header {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.modal-body {
-  margin-bottom: 20px;
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.modal-footer button {
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
 }
