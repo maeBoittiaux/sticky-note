@@ -17,16 +17,19 @@
 
 /* The circle button in the top right */
 .add-note-button {
-  background-color: #cacaca;
+  background-color: #dbdbdb;
   border: none;
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  font-size: 26px;
+  font-size: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: white;
+  margin: 8px;
+  font-weight: bold;
 }
 
 /* The grid the notes are on */
