@@ -201,3 +201,9 @@ input::placeholder {
 .sticky-note-top:hover .edit-note-button {
   display: block;
 }
+
+.delete-item-button {
+  background-color: transparent;
+  color: #941111;
+  margin-right: -8px;
+}
