@@ -119,12 +119,6 @@ button:hover {
   word-wrap: break-word;
 }
 
-/* Button to delete items */
-.delete-item-button {
-  background: none;
-  border: none;
-}
-
 /* The container for the add item input and button */
 .add-item-section {
   position: absolute;
