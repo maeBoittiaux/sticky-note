@@ -10,7 +10,6 @@
 
 /* The top section which may contain the add note circle plus button */
 .top-bar {
-  width: 100%;
   display: flex;
   justify-content: flex-end;
 }
@@ -71,26 +70,22 @@ input::placeholder {
 
 /* Hover effects for all buttons */
 button:hover {
-  background-color: #33333366;
+  background-color: #33333350;
 }
 
 /* The actual sticky notes */
 .sticky-note {
   width: 260px;
   height: 260px;
-  border: 2px solid;
+  border: 2px solid transparent;
   box-shadow: 8px 8px rgba(0, 0, 0, 0.1);
   position: relative;
-  padding: 0;
   overflow: hidden;
-  background-color: #e1d255;
 }
 
 /* Top stripe on the sticky notes */
 .sticky-note-top {
-  padding: 10px;
-  background-color: #fffb7d;
-  color: #333;
+  padding: 4px 8px;
   position: relative;
 }
 
@@ -104,10 +99,9 @@ button:hover {
 /* The full list of items on the notes */
 .items-list {
   margin: 0;
-  padding: 10px;
+  padding: 8px;
   list-style: none;
-  max-height: 200px;
-  overflow-y: auto;
+  max-height: 240px;
 }
 
 /* Each individual item */
@@ -115,39 +109,21 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
-  word-wrap: break-word;
 }
 
 /* The container for the add item input and button */
 .add-item-section {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
   display: flex;
-  gap: 5px;
-  background-color: transparent;
 }
 
 /* The add item input box */
-.add-item-input {
-  flex-grow: 1;
-  padding: 5px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  background-color: inherit;
-  color: #333;
-}
-
-/* The button to add the item ins */
+.add-item-input,
 .add-item-button {
   background-color: inherit;
-  color: #333;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
 }
 
 /* The overlay when the modals are active */

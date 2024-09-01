@@ -12,12 +12,12 @@ function EditNoteModal({ isOpen, onClose, noteTitle, noteColor, onSave, onDelete
     if (!isOpen) return null;
 
     const colors = [
-        { label: 'Yellow', value: '#fffb7d' },
-        { label: 'Red', value: '#ff9a9a' },
-        { label: 'Green', value: '#9aff9a' },
-        { label: 'Blue', value: '#9ad4ff' },
-        { label: 'Pink', value: '#ffb3ff' },
-        { label: 'Purple', value: '#c9a9ff' }
+        { value: '#fffb7d' },
+        { value: '#ff9a9a' },
+        { value: '#9aff9a' },
+        { value: '#9ad4ff' },
+        { value: '#ffb3ff' },
+        { value: '#c9a9ff' }
     ];
 
     return (
