@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Title from './Title';
-import HabitList from './HabitList';
+import StickyNote from './StickyNote';
 
 function App() {
   return (
     <div className="App">
       <Title />
-      <HabitList />
+      <StickyNote />
     </div>
   );
 }
