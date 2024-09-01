@@ -200,10 +200,6 @@ button:hover {
   margin-bottom: 18px;
 }
 
-.modal-body {
-  margin-bottom: 20px;
-}
-
 .modal-footer {
   display: flex;
   justify-content: space-between;
