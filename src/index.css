@@ -91,8 +91,8 @@ input::placeholder {
 /* Title of sticky note */
 .sticky-note-title {
   font-size: 20px;
-  font-weight: bold;
   margin: 0;
+  padding: 4px;
 }
 
 /* The full list of items on the notes */
