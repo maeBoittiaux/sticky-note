@@ -26,7 +26,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   color: white;
   margin: 8px;
   font-weight: bold;
@@ -39,9 +38,8 @@
   gap: 40px;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 16px;
   box-sizing: border-box;
-  width: 100%;
 }
 
 /* Styles for all the buttons */
@@ -220,6 +218,9 @@ button:hover {
   display: none;
   cursor: pointer;
 }
+
+
+/* NEED and do not change */
 
 /* Makes the edit button show on sticky note header */
 .sticky-note-top:hover .edit-note-button {

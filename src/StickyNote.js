@@ -32,7 +32,7 @@ function StickyNote({ id, title, color, items = [], onDelete, onEdit }) {
         <div className="sticky-note" style={{ backgroundColor: darkerColor, borderColor: darkerColor }}>
             <div className="sticky-note-top" style={{ backgroundColor: color }}>
                 <div className="sticky-note-title">{title}</div>
-                <button className="edit-note-button" onClick={() => onEdit(id, title, color)}>✏️</button>
+                <button className="edit-note-button" onClick={() => onEdit(id, title, color)}>✎</button>
             </div>
             <ul className="items-list">
                 {itemList.map((item, index) => (
