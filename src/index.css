@@ -1,91 +1,251 @@
-/* The title : 'Habit Tracker' */
-.title {
-  color: #333;
-  font-size: 42px;
-}
-
-/* The whole window container thing */
-body {
+.app-container {
   font-family: 'Courier New', Courier, monospace;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-note-button {
+  background-color: #cacaca;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  color: #333;
-}
-
-/* Styles for the unordered list / makes no bullet points */
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-/* The list containers */
-.list-container {
-  padding: 15px;
-  margin: 15px;
-  box-shadow: 8px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid #cfcf8c;
-  background-color: #f5f5c1;
-}
-
-/* The title of the list containers */
-.list-container h3 {
-  margin: 10px;
-  font-size: 20px;
-}
-
-/* The list items */
-li {
-  padding: 10px;
-  margin: 10px;
-}
-
-/* The buttons */
-button {
-  color: #333;
-  font-family: 'Courier New', Courier, monospace;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 2px solid #777777;
-  border-radius: 20px;
-  background-color: #f0f0f0;
   cursor: pointer;
 }
 
-/* The effects when the button is hovered over */
-button:hover {
-  border: 2px solid #333;
-  color: #333;
+.sticky-notes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
-/* The input boxes */
-input {
-  color: #333;
+button {
   font-family: 'Courier New', Courier, monospace;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 2px solid white;
-  border-radius: 20px;
-  width: 250px;
-  margin-right: 10px;
-}
-
-/* The effects when the input box is clicked on */
-input:focus {
-  border: 2px solid #333;
-  outline: none;
-}
-
-/* The placeholder text in the input boxes */
-input::placeholder {
   color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  border: none;
+}
+
+input {
+  font-family: 'Courier New', Courier, monospace;
+  color: #333;
+  border-radius: 30px;
+  padding: 10px;
+  border: none;
+  background-color: #e0e0e0;
+}
+
+input::placeholder {
+  color: #696969;
+}
+
+button:hover {
+  background-color: #33333366;
 }
 
 .sticky-note {
-  background-color: #f5f5c1;
-  border: 2px solid #cfcf8c;
+  width: 260px;
+  height: 260px;
+  border: 2px solid;
+  box-shadow: 8px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e1d255;
+}
+
+.sticky-note-top {
+  padding: 10px;
+  background-color: #fffb7d;
+  color: #333;
+  position: relative;
+}
+
+.sticky-note-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.delete-note-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #333;
+  display: none;
+  cursor: pointer;
+}
+
+.sticky-note-top:hover .delete-note-button {
+  display: block;
+}
+
+.items-list {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  word-wrap: break-word;
+}
+
+.delete-item-button {
+  background: none;
+  border: none;
+}
+
+.add-item-section {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+  background-color: transparent;
+}
+
+.add-item-input {
+  flex-grow: 1;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: inherit;
+  color: #333;
+}
+
+.add-item-button {
+  background-color: inherit;
+  color: #333;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  width: 380px;
+  height: 140px;
+  text-align: center;
+}
+
+.modal-header {
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.color-option {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 8px;
+  cursor: pointer;
+  border: 2px solid #3333333a;
+}
+
+.color-option.selected {
+  box-shadow: 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-note-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #333;
+  display: none;
+  cursor: pointer;
+}
+
+.sticky-note-top:hover .edit-note-button {
+  display: block;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+}
+
+.modal-header {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-body {
+  margin-bottom: 20px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-footer button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
