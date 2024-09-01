@@ -1,3 +1,4 @@
+/* Contains everything in the window */
 .app-container {
   font-family: 'Courier New', Courier, monospace;
   display: flex;
@@ -7,12 +8,14 @@
   margin: 0;
 }
 
+/* The top section which may contain the add note circle plus button */
 .top-bar {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
+/* The circle button in the top right */
 .add-note-button {
   background-color: #cacaca;
   border: none;
@@ -26,6 +29,7 @@
   cursor: pointer;
 }
 
+/* The grid the notes are on */
 .sticky-notes-grid {
   display: flex;
   flex-wrap: wrap;
@@ -37,6 +41,7 @@
   width: 100%;
 }
 
+/* Styles for all the buttons */
 button {
   font-family: 'Courier New', Courier, monospace;
   color: #333;
@@ -47,6 +52,7 @@ button {
   border: none;
 }
 
+/* Styles for all input forms */
 input {
   font-family: 'Courier New', Courier, monospace;
   color: #333;
@@ -56,14 +62,17 @@ input {
   background-color: #e0e0e0;
 }
 
+/* The placeholder text in input fields */
 input::placeholder {
   color: #696969;
 }
 
+/* Hover effects for all buttons */
 button:hover {
   background-color: #33333366;
 }
 
+/* The actual sticky notes */
 .sticky-note {
   width: 260px;
   height: 260px;
@@ -75,6 +84,7 @@ button:hover {
   background-color: #e1d255;
 }
 
+/* Top stripe on the sticky notes */
 .sticky-note-top {
   padding: 10px;
   background-color: #fffb7d;
@@ -82,12 +92,14 @@ button:hover {
   position: relative;
 }
 
+/* Title of sticky note */
 .sticky-note-title {
   font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
 
+/* Button to delete note */
 .delete-note-button {
   position: absolute;
   top: 5px;
@@ -103,6 +115,7 @@ button:hover {
   display: block;
 }
 
+/* The full list of items on the notes */
 .items-list {
   margin: 0;
   padding: 10px;
@@ -111,6 +124,7 @@ button:hover {
   overflow-y: auto;
 }
 
+/* Each individual item */
 .item {
   display: flex;
   justify-content: space-between;
@@ -119,11 +133,13 @@ button:hover {
   word-wrap: break-word;
 }
 
+/* Button to delete items */
 .delete-item-button {
   background: none;
   border: none;
 }
 
+/* The container for the add item input and button */
 .add-item-section {
   position: absolute;
   bottom: 10px;
@@ -134,6 +150,7 @@ button:hover {
   background-color: transparent;
 }
 
+/* The add item input box */
 .add-item-input {
   flex-grow: 1;
   padding: 5px;
@@ -144,6 +161,7 @@ button:hover {
   color: #333;
 }
 
+/* The button to add the item ins */
 .add-item-button {
   background-color: inherit;
   color: #333;
@@ -152,6 +170,7 @@ button:hover {
   cursor: pointer;
 }
 
+/* The overlay when the modals are active */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -165,6 +184,7 @@ button:hover {
   backdrop-filter: blur(4px);
 }
 
+/* Styles for the modals */
 .modal {
   background: white;
   padding: 20px;
@@ -174,11 +194,13 @@ button:hover {
   text-align: center;
 }
 
+/* Modal headers */
 .modal-header {
   font-size: 22px;
   margin-bottom: 18px;
 }
 
+/* The circle colour options on the modals */
 .color-option {
   display: inline-block;
   width: 40px;
@@ -189,10 +211,12 @@ button:hover {
   border: 2px solid #3333333a;
 }
 
+/* When the circle colour options are clicked on */
 .color-option.selected {
   box-shadow: 4px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Button to edit the note in header section */
 .edit-note-button {
   position: absolute;
   top: 5px;
