@@ -11,14 +11,7 @@ function EditNoteModal({ isOpen, onClose, noteTitle, noteColor, onSave, onDelete
 
     if (!isOpen) return null;
 
-    const colors = [
-        { value: '#fffb7d' },
-        { value: '#ff9a9a' },
-        { value: '#9aff9a' },
-        { value: '#9ad4ff' },
-        { value: '#ffb3ff' },
-        { value: '#c9a9ff' }
-    ];
+    const colorOptions = ['#fffb7d', '#ff9a9a', '#9aff9a', '#9ad4ff', '#ffb3ff', '#c9a9ff'];
 
     return (
         <div className="modal-overlay">
@@ -32,15 +25,14 @@ function EditNoteModal({ isOpen, onClose, noteTitle, noteColor, onSave, onDelete
                         placeholder="Note Title"
                         maxLength="20"
                     />
-                    <div>
-                        {colors.map(({ label, value }) => (
-                            <button
-                                key={value}
-                                style={{ backgroundColor: value }}
-                                onClick={() => setColor(value)}
-                            >
-                                {label}
-                            </button>
+                    <div className="color-options">
+                        {colorOptions.map((option) => (
+                            <div
+                                key={option}
+                                className={`color-option ${color === option ? 'selected' : ''}`}
+                                style={{ backgroundColor: option }}
+                                onClick={() => setColor(option)}
+                            ></div>
                         ))}
                     </div>
                 </div>

@@ -164,8 +164,8 @@ button:hover {
 /* The circle colour options on the modals */
 .color-option {
   display: inline-block;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   margin: 8px;
   cursor: pointer;
