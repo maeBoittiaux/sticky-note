@@ -100,22 +100,6 @@ button:hover {
   margin: 0;
 }
 
-/* Button to delete note */
-.delete-note-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: none;
-  border: none;
-  color: #333;
-  display: none;
-  cursor: pointer;
-}
-
-.sticky-note-top:hover .delete-note-button {
-  display: block;
-}
-
 /* The full list of items on the notes */
 .items-list {
   margin: 0;
@@ -234,6 +218,7 @@ button:hover {
   cursor: pointer;
 }
 
+/* Makes the edit button show on sticky note header */
 .sticky-note-top:hover .edit-note-button {
   display: block;
 }
