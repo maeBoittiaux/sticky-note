@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getNotes, addNoteToDB, deleteNoteFromDB } from './db';
+import { getNotes, addNoteToDB, updateNoteInDB, deleteNoteFromDB } from './db';
 import NoteModal from './NoteModal';
 import StickyNote from './StickyNote';
 import EditNoteModal from './EditNoteModal';
@@ -24,6 +24,13 @@ function App() {
     setNotes(prevNotes => [...prevNotes, { ...newNote, id }]);
   };
 
+  const updateNote = async (updatedNote) => {
+    await updateNoteInDB(updatedNote);
+    setNotes(prevNotes => prevNotes.map(note =>
+      note.id === updatedNote.id ? updatedNote : note
+    ));
+  };
+
   const deleteNote = async (id) => {
     await deleteNoteFromDB(id);
     setNotes(prevNotes => prevNotes.filter(note => note.id !== id));
@@ -40,10 +47,40 @@ function App() {
   };
 
   const handleSaveNote = async (id, title, color) => {
+    const updatedNote = notes.find(note => note.id === id);
+    updatedNote.title = title;
+    updatedNote.color = color;
+    await updateNoteInDB(updatedNote);
     setNotes(prevNotes => prevNotes.map(note =>
-      note.id === id ? { ...note, title, color } : note
+      note.id === id ? updatedNote : note
     ));
     setShowEditModal(false);
+  };
+
+  const handleAddItem = async (noteId, newItem) => {
+    const updatedNotes = notes.map(note => {
+      if (note.id === noteId) {
+        const updatedItems = [...note.items, newItem];
+        const updatedNote = { ...note, items: updatedItems };
+        updateNoteInDB(updatedNote);
+        return updatedNote;
+      }
+      return note;
+    });
+    setNotes(updatedNotes);
+  };
+
+  const handleDeleteItem = async (noteId, itemIndex) => {
+    const updatedNotes = notes.map(note => {
+      if (note.id === noteId) {
+        const updatedItems = note.items.filter((_, index) => index !== itemIndex);
+        const updatedNote = { ...note, items: updatedItems };
+        updateNoteInDB(updatedNote);
+        return updatedNote;
+      }
+      return note;
+    });
+    setNotes(updatedNotes);
   };
 
   return (
@@ -61,6 +98,8 @@ function App() {
             items={note.items}
             onDelete={deleteNote}
             onEdit={handleEditNote}
+            onAddItem={handleAddItem}
+            onDeleteItem={handleDeleteItem}
           />
         ))}
       </div>

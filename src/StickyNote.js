@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function StickyNote({ id, title, color, items = [], onDelete, onEdit }) {
-    const [itemList, setItemList] = useState(items);
+function StickyNote({ id, title, color, items = [], onDelete, onEdit, onAddItem, onDeleteItem }) {
     const [newItem, setNewItem] = useState('');
+    const [itemList, setItemList] = useState(items);
+
+    useEffect(() => {
+        setItemList(items);
+    }, [items]);
 
     const darkerColor = {
         '#fffb7d': '#e1d255',
@@ -15,13 +19,13 @@ function StickyNote({ id, title, color, items = [], onDelete, onEdit }) {
 
     const handleAddItem = () => {
         if (newItem.trim()) {
-            setItemList(prevItems => [...prevItems, newItem]);
+            onAddItem(id, newItem);
             setNewItem('');
         }
     };
 
     const handleDeleteItem = (index) => {
-        setItemList(prevItems => prevItems.filter((_, i) => i !== index));
+        onDeleteItem(id, index);
     };
 
     const handleKeyDown = (e) => {
