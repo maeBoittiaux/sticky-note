@@ -16,14 +16,15 @@ function EditNoteModal({ isOpen, onClose, noteTitle, noteColor, onSave, onDelete
     return (
         <div className="modal-overlay">
             <div className="modal">
-                <div className="modal-header">Edit Note</div>
+                <div className="modal-header">Edit Sticky Note</div>
                 <div className="modal-body">
                     <input
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         placeholder="Note Title"
-                        maxLength="20"
+                        maxLength="16"
+                        className='modal-input'
                     />
                     <div className="color-options">
                         {colorOptions.map((option) => (

@@ -20,9 +20,11 @@ function NoteModal({ addNote, closeModal }) {
                 <div className="modal-body">
                     <input
                         type="text"
-                        placeholder="Title"
+                        placeholder="Enter sticky note title ..."
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
+                        className='modal-input'
+                        maxLength="16"
                     />
                     <div className="color-options">
                         {colorOptions.map((option) => (

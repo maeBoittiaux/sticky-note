@@ -43,7 +43,7 @@ function StickyNote({ id, title, color, items = [], onDelete, onEdit }) {
                 ))}
             </ul>
             {itemList.length < 8 && (
-                <div className="add-item-section" style={{ backgroundColor: color }}>
+                <div className="add-item-section">
                     <input
                         type="text"
                         className="add-item-input"
