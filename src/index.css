@@ -99,6 +99,8 @@ input::placeholder {
   padding: 8px;
   list-style: none;
   max-height: 240px;
+  margin-left: 4px;
+  margin-top: -4px;
 }
 
 /* Each individual item */
@@ -216,4 +218,19 @@ input::placeholder {
 .modal-input:focus {
   box-shadow: 4px 4px rgba(0, 0, 0, 0.4);
   outline: none;
+}
+
+.add-item-input {
+  border: none;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  margin-left: 4px;
+}
+
+.add-item-input {
+  outline: none;
+}
+
+.add-item-button {
+  font-weight: bold;
 }

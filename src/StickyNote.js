@@ -42,7 +42,7 @@ function StickyNote({ id, title, color, items = [], onDelete, onEdit }) {
                     </li>
                 ))}
             </ul>
-            {itemList.length < 8 && (
+            {itemList.length < 6 && (
                 <div className="add-item-section">
                     <input
                         type="text"
@@ -50,10 +50,13 @@ function StickyNote({ id, title, color, items = [], onDelete, onEdit }) {
                         value={newItem}
                         onChange={(e) => setNewItem(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        placeholder="Add new item"
+                        placeholder="Add new item ..."
                         maxLength="20"
+                        style={{ backgroundColor: color }}
                     />
-                    <button className="add-item-button" onClick={handleAddItem}>Add</button>
+                    <button className="add-item-button"
+                        onClick={handleAddItem}
+                        style={{ color: color }}>Add</button>
                 </div>
             )}
         </div>
